@@ -17,7 +17,7 @@ require 'nokogiri'
       puts "These are the services that Kefoto offers:"
       service_names
       list_products
-          binding.pry
+
       puts "Enter the number of the product you wish to inspect"
       @answer = gets.chomp
 
@@ -51,17 +51,27 @@ require 'nokogiri'
 
           @service_links = home_html.css(".nav-link").map {|link| link['href']}
             @service_links.each do |link|
+              @link = link
             service_link =  @page_url.concat(link)
             @product_url = Nokogiri::HTML(open(service_link))
 
           end
       end
 
-      def view_price_range
-        if link == "foto-enmarcada.php"
-          @product_prices = product_url.css(".m-0").text.map {|price| /\d/}
-      end
 
+      def view_price_range
+        money_sign = "$"
+        if @link == "foto-enmarcada.php"
+          @product_prices = product_url.css(".m-0").text
+          prices_array = @product_prices.split(":")
+          clean_price_array = prices_array.map { |price| price.match /[$]\d......./}
+          cleaner_price_array = clean_price_array.map { |price| price.match /\d/}
+          final_price_array = cleaner_price_array.map { |price| money_sign.concat(price)}
+          binding.pry
+          final_price_array
+
+      end
+end
 
 
     #  def view_price_range
