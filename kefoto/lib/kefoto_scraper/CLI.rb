@@ -24,13 +24,6 @@ require 'nokogiri'
 
     end
 
-          # view_price_range
-          # puts "Would you like to go back to the service menu? y/n"
-          # answer = gets.chomp
-          #   if answer == "y"
-          #   call
-          #   end
-
 
     def home_html
         Nokogiri::HTML(open(@page_url))
@@ -59,13 +52,16 @@ require 'nokogiri'
           @service_links = home_html.css(".nav-link").map {|link| link['href']}
             @service_links.each do |link|
             service_link =  @page_url.concat(link)
-            product_url = Nokogiri::HTML(open(service_link))
-            if link == "foto-enmarcada.php"
-            @product_prices = product_url.css(".m-0").text.map {|price| /\d/}
+            @product_url = Nokogiri::HTML(open(service_link))
 
-            binding.pry
           end
       end
+
+      def view_price_range
+        if link == "foto-enmarcada.php"
+          @product_prices = product_url.css(".m-0").text.map {|price| /\d/}
+      end
+
 
 
     #  def view_price_range
