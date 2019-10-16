@@ -9,14 +9,14 @@ require 'nokogiri'
 
     def initialize
     @product_names = []
-    PAGE_URL = "https://kefotos.mx/"
+    @page_url = "https://kefotos.mx/"
     end
 
     def call
-
     puts "These are the services that Kefoto offers:"
     list_products
-    binding.pry
+    end
+
     # puts "which service would you like to select?"
     # @selection = gets.chomp
     # view_price_range
@@ -25,17 +25,9 @@ require 'nokogiri'
     #   if answer == "y"
     #   call
     #   end
-    end
-
-    private
 
     def home_html
-        # @home_html ||=
-        #     HTTParty.get root_path
-
-        Nokogiri::HTML(open(PAGE_URL))
-
-
+        Nokogiri::HTML(open(@page_url))
     end
 
 def service_names
@@ -48,16 +40,26 @@ def service_names
       @product_names
     end
 
-     def list_products
-       i = 1
-       n = 0
 
-       until @product_names.length > n do
-        @product_names.each {|list_item| puts "#{i} #{list_item}"}
-        i += 1
-        n += 1
-       end
-      end
+def list_products
+    n = 1
+    @product_names.each_with_index do |list_item, i|
+      puts "#{n} #{list_item}"
+      n+=1
+    end
+  end
+
+
+       #  i = 1
+       #  n = 1
+       # while n < @product_names.length
+       #    item = @product_names[n]
+       #    puts "#{i}). #{item}"
+       #   i += 1
+       #   n += 1
+       #  end
+       # end
+
 
       def service_links
           @service_links ||=
