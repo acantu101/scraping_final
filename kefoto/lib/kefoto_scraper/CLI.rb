@@ -61,35 +61,25 @@ require 'nokogiri'
 
       def view_price_range
         money_sign = "$"
+
         if @link == "foto-enmarcada.php"
+
+        if link == "foto-enmarcada.php"
+
           @product_prices = product_url.css(".m-0").text
           prices_array = @product_prices.split(":")
           clean_price_array = prices_array.map { |price| price.match /[$]\d......./}
           cleaner_price_array = clean_price_array.map { |price| price.match /\d/}
+
           final_price_array = cleaner_price_array.map { |price| money_sign.concat(price)}
           binding.pry
           final_price_array
 
       end
+
+      end
 end
 
-
-    #  def view_price_range
-    #    price_range = []
-    #    @service_links.each do |link|
-    #    if @service = link
-    # link.css(".row").map {|price| price["p"].value}
-    #    price_range << p
-    #     end
-    #    price_range
-    #  end
-
-     # # TODO: read about ruby memoization
-     # def home_node
-     #
-     #     @home_node ||=
-     #      Nokogiri::HTML(PAGE_URL)
-     # end
 
 
 end
