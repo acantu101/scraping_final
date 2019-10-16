@@ -58,8 +58,15 @@ require 'nokogiri'
       end
 
       def view_price_range
+        money_sign = "$"
         if link == "foto-enmarcada.php"
-          @product_prices = product_url.css(".m-0").text.map {|price| /\d/}
+          @product_prices = product_url.css(".m-0").text
+          prices_array = @product_prices.split(":")
+          clean_price_array = prices_array.map { |price| price.match /[$]\d......./}
+          cleaner_price_array = clean_price_array.map { |price| price.match /\d/}
+          final_price_array= cleaner_price_array.map { |price| money_sign.concat(price)}
+    
+          
       end
 
 
