@@ -64,22 +64,5 @@ require 'nokogiri'
 
 
 
-    #  def view_price_range
-    #    price_range = []
-    #    @service_links.each do |link|
-    #    if @service = link
-    # link.css(".row").map {|price| price["p"].value}
-    #    price_range << p
-    #     end
-    #    price_range
-    #  end
-
-     # # TODO: read about ruby memoization
-     # def home_node
-     #
-     #     @home_node ||=
-     #      Nokogiri::HTML(PAGE_URL)
-     # end
-
 
 end
