@@ -20,6 +20,8 @@ require 'nokogiri'
 
       puts "Enter the number of the product you wish to inspect"
       @answer = gets.chomp
+      select
+      view_price_range
 
 
     end
@@ -31,7 +33,7 @@ require 'nokogiri'
 
     def service_names
         @service_names = home_html.css(".nav-link").map do
-          |@link| link['href'].to_s.gsub(/.php/, "")
+          |link| link['href'].to_s.gsub(/.php/, "")
         end
       @service_names.each do |pr|
       @product_names << pr
@@ -47,42 +49,36 @@ require 'nokogiri'
         end
       end
 
-      def service_links
-
-          @service_links = home_html.css(".nav-link").map {|link| link['href']}
-            @service_links.each do |link|
-    
-            service_link =  @page_url.concat(link)
-            @product_url = Nokogiri::HTML(open(service_link))
-
-          end
-      end
-
       def select
-       @product_array = home_html.css(".nav-link").map do
-        |link| link['href']
-        @link = link
-        @selection = @link[@answer-1]
+        @product_array = home_html.css(".nav-link").map {|link| link['href']}
+         @service_links = home_html.css(".nav-link").map {|link| link['href']}
+         @selection = @service_links[@answer.to_i-1]
+         @url = @page_url.concat(@selection)
+         @product_url = Nokogiri::HTML(open(@url))
 
+        end
+  
       def view_price_range
         money_sign = "$"
 
         if @selection == "foto-enmarcada.php"
+        
 
-          @product_prices = product_url.css(".m-0").text
+          @product_prices = @product_url.css(".m-0").text
           prices_array = @product_prices.split(":")
-          clean_price_array = prices_array.map { |price| price.match /[$]\d......./}
-          cleaner_price_array = clean_price_array.map { |price| price.match /\d/}
+          money = prices_array.match /[$]\d......./
 
-          final_price_array = cleaner_price_array.map { |price| money_sign.concat(price)}
-          binding.pry
+          cleaner_price_array = money.match /\d/
+
+          final_price_array = cleaner_price_array.map {|price| money_sign.concat(price)}
+       
           final_price_array
-
-      end
-
-      end
-end
-
+          end
+        end
+     
+  
 
 
 end
+
+
