@@ -50,7 +50,6 @@ require 'nokogiri'
       end
 
       def select
-        @product_array = home_html.css(".nav-link").map {|link| link['href']}
          @service_links = home_html.css(".nav-link").map {|link| link['href']}
          @selection = @service_links[@answer.to_i-1]
          @url = @page_url.concat(@selection)
