@@ -20,9 +20,10 @@ require 'nokogiri'
 
       puts "Enter the number of the product you wish to inspect"
       @answer = gets.chomp
-      select
+      puts "Selecting #{@answer}. #{@product_names[@answer.to_i-1]}"
+      select_from_list
       view_price_range
-
+      @price
 
     end
 
@@ -49,10 +50,11 @@ require 'nokogiri'
         end
       end
 
-      def select
+      def select_from_list
          @service_links = home_html.css(".nav-link").map {|link| link['href']}
          @selection = @service_links[@answer.to_i-1]
          @url = @page_url.concat(@selection)
+       
          @product_url = Nokogiri::HTML(open(@url))
 
         end
@@ -60,20 +62,13 @@ require 'nokogiri'
       def view_price_range
         money_sign = "$"
 
-        if @selection == "foto-enmarcada.php"
-        
-
           @product_prices = @product_url.css(".m-0").text
-          prices_array = @product_prices.split(":")
-          money = prices_array.match /[$]\d......./
-
-          cleaner_price_array = money.match /\d/
-
-          final_price_array = cleaner_price_array.map {|price| money_sign.concat(price)}
-       
-          final_price_array
+          @price = @product_prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
+          @price
+     
           end
-        end
+          
+       
      
   
 
