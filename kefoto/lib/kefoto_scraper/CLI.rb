@@ -31,7 +31,7 @@ require 'nokogiri'
 
     def service_names
         @service_names = home_html.css(".nav-link").map do
-          |link| link['href'].to_s.gsub(/.php/, "")
+          |@link| link['href'].to_s.gsub(/.php/, "")
         end
       @service_names.each do |pr|
       @product_names << pr
@@ -51,20 +51,23 @@ require 'nokogiri'
 
           @service_links = home_html.css(".nav-link").map {|link| link['href']}
             @service_links.each do |link|
-              @link = link
+    
             service_link =  @page_url.concat(link)
             @product_url = Nokogiri::HTML(open(service_link))
 
           end
       end
 
+      def select
+       @product_array = home_html.css(".nav-link").map do
+        |link| link['href']
+        @link = link
+        @selection = @link[@answer-1]
 
       def view_price_range
         money_sign = "$"
 
-        if @link == "foto-enmarcada.php"
-
-        if link == "foto-enmarcada.php"
+        if @selection == "foto-enmarcada.php"
 
           @product_prices = product_url.css(".m-0").text
           prices_array = @product_prices.split(":")
