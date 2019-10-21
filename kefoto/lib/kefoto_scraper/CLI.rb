@@ -54,25 +54,22 @@ require 'nokogiri'
          @service_links = home_html.css(".nav-link").map {|link| link['href']}
          @selection = @service_links[@answer.to_i-1]
          @url = @page_url.concat(@selection)
-       
+
          @product_url = Nokogiri::HTML(open(@url))
 
         end
-  
+
       def view_price_range
         money_sign = "$"
 
           @product_prices = @product_url.css(".m-0").text
           @price = @product_prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
           @price
-     
+
           end
-          
-       
-     
-  
+        end
+
+
 
 
 end
-
-
