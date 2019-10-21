@@ -63,11 +63,9 @@ require 'httparty'
         end
 
       def view_price_range
-        money_sign = "$"
-
         @product_prices = @product_url.css(".container-fluid").text
-          @price = @product_prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
-          @price
+        @price = @product_prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
+        @price
         end
 
 
