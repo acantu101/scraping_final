@@ -10,7 +10,7 @@ require 'httparty'
 
     def initialize
     @product_names = get_product_names()
-    @page_url = "https://kefotos.mx/"
+    @page_url = "https://www.kefotos.mx/"
     end
 
 
@@ -32,7 +32,7 @@ require 'httparty'
 
 
     def get_html
-      HTTParty.get(@page_url)
+    get_html =  HTTParty.get(@page_url)
 
     end
 
