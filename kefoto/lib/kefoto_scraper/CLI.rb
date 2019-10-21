@@ -59,8 +59,7 @@ require 'httparty'
          @url = @page_url.concat(@selection)
 
          @product_url = HTTParty.get @url
-
-        end
+       end
 
       def view_price_range
         @product_prices = @product_url.css(".container-fluid").text
