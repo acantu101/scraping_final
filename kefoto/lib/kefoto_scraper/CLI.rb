@@ -67,7 +67,7 @@ require 'nokogiri'
           @price
 
           end
-        end
+
 
 
 
