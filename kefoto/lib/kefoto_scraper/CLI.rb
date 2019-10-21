@@ -58,7 +58,7 @@ require 'httparty'
          @selection = @service_links[@answer.to_i-1]
          @url = @page_url.concat(@selection)
 
-         @product_url = HTTParty.get(@url)
+         @product_url = HTTParty.get @url
 
         end
 
