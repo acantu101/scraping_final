@@ -33,7 +33,6 @@ require 'httparty'
 
     def get_html
     get_html =  HTTParty.get @page_url
-
     end
 
 
