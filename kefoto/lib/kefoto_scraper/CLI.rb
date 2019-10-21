@@ -65,11 +65,7 @@ require 'nokogiri'
           @product_prices = @product_url.css(".m-0").text
           @price = @product_prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
           @price
-
-          end
-
-
-
+        end
 
 
 end
