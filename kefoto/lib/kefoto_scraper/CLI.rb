@@ -41,7 +41,7 @@ require 'httparty'
     get_html.css('.nav-link[href]').map { |l|
       l['href'].sub(/\.php$/, '')
     }
-  end
+    end
 
 
 
