@@ -9,14 +9,15 @@ require 'httparty'
 
 
     def initialize
-    @product_names = get_product_names()
     @page_url = "https://www.kefotos.mx/"
+    @product_names = get_product_names()
     end
 
 
     def call
       puts "These are the services that Kefoto offers:"
       get_product_names
+      require 'httparty'
       list_products
       puts "Enter the number of the product you wish to inspect"
       @answer = gets.chomp
@@ -27,12 +28,13 @@ require 'httparty'
       view_price_range
       @price
 
-
+      puts @price
     end
 
 
     def get_html
-    get_html =  HTTParty.get @page_url
+    get_html ||=
+     Nokogiri::HTML(HTTParty.get @page_url) 
     end
 
 
@@ -50,21 +52,20 @@ require 'httparty'
           puts "#{n} #{list_item}"
           n+=1
         end
-      end
+    end
 
       def select_from_list
          @service_links = get_html.css(".nav-link").map {|link| link['href']}
          @selection = @service_links[@answer.to_i-1]
          @url = @page_url.concat(@selection)
-
-         @product_url = HTTParty.get @url
-       end
+         @product_url = Nokogiri::HTML(HTTParty.get @url)
+      end
 
       def view_price_range
         @product_prices = @product_url.css(".container-fluid").text
         @price = @product_prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
         @price
-        end
+      end
 
 
 end
