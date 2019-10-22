@@ -52,7 +52,7 @@
         n = 1
           @product_names.each_with_index do |list_item, i|
             puts "#{n} #{list_item}"
-            n+=1
+        n+=1
           end
       end
 
