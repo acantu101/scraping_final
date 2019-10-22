@@ -27,16 +27,16 @@
 
         if @answer == "1"
           photo_enmarcada_price_range_cli
-        else 
-          price_cli 
+        else
+          price_cli
         end
       end
-    
-    
+
+
 
       def get_html
         get_html ||=
-        Nokogiri::HTML(HTTParty.get @page_url) 
+        Nokogiri::HTML(HTTParty.get @page_url)
       end
 
 
@@ -67,7 +67,7 @@
 
         @product_prices = @product_url.css(".container-fluid").text
         @prices = @product_prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
-        @prices.each do |price| 
+        @prices.each do |price|
           @price_range << price[0]
         end
       end
@@ -77,6 +77,7 @@
           @price_range_frame_type = @price_range.drop(6)
           puts "These are the range of prices based on dimension:"
           puts "#{@price_range_size_dimension.first} - #{@price_range_size_dimension.last}"
+          puts "These are the range of prices based on frame type:"
           puts "#{@price_range_frame_type.first} - #{@price_range_frame_type.last}"
           puts "Would you like to see the uniq prices in the range for both of these? y/n"
           @answer_1 = gets.chomp
@@ -96,7 +97,7 @@
 
       def price_cli
           puts "These are the range of prices"
-          puts "#{@price_range.first} - #{@price_range.last}"
+          puts "#{@price_range.min} - #{@price_range.max}"
           puts "Would you like to see the uniq prices in the range for both of these? y/n"
           @answer_1 = gets.chomp
 
@@ -108,7 +109,7 @@
           end
       end
 
-      
+
       def main_menu
           puts "Do you want to return to the main menu? y/n"
           @yn = gets.chomp
@@ -116,9 +117,5 @@
           call
         end
       end
-    
+
     end
-
-
-
-
