@@ -33,7 +33,6 @@
       end
 
 
-
       def get_html
         get_html ||=
         Nokogiri::HTML(HTTParty.get @page_url)
@@ -64,11 +63,12 @@
       end
 
       def price_array
-
+        @price_array = []
         @product_prices = @product_url.css(".container-fluid").text
         @prices = @product_prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
         @prices.each do |price|
-          @price_range << price[0]
+          @price_array << price[0]
+
         end
       end
 
@@ -97,12 +97,12 @@
 
       def price_cli
           puts "These are the range of prices"
-          puts "#{@price_range.min} - #{@price_range.max}"
+          puts "#{@price_array.min} - #{@price_array.max}"
           puts "Would you like to see the uniq prices in the range for both of these? y/n"
           @answer_1 = gets.chomp
 
           if @answer_1 == "y"
-              puts @price_range.uniq
+              puts @price_array.uniq
               main_menu
           elsif @answer_1 == "n"
               main_menu
@@ -117,5 +117,6 @@
           call
         end
       end
+
 
     end
