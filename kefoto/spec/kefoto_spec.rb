@@ -3,7 +3,8 @@ RSpec.describe Kefoto do
     expect(Kefoto::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "converts uses user input to select a proudct" do
+    expect(select_from_list_cli).to eq(true)
+
   end
 end
