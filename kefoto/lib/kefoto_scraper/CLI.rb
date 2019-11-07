@@ -26,16 +26,14 @@ attr_accessor :url
 
       def select_from_list_cli
         puts "Enter the number of the product you wish to inspect"
-
         answer = gets.chomp
-        if answer.to_i.between?(1,6) == false
-          puts "ERROR! You did not select a valid number from the list. Please try again."
-        else
-          @selected_product = Products.all[answer.to_i-1]
-          puts "Selecting #{@selected_product.name}"
-          puts "These is the price range for #{@selected_product.name}:"
-          puts "#{@selected_product.price_range}"
-
+          if answer.to_i.between?(1,6) == false
+            puts "ERROR! You did not select a valid number from the list. Please try again."
+          else
+        selected_product = Products.all[answer.to_i-1]
+        puts "Selecting #{selected_product.name}"
+        puts "These is the price range for #{selected_product.name}:"
+        puts "#{selected_product.price_range}"
         end
       end
 
