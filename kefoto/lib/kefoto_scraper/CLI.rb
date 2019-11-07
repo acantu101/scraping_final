@@ -2,20 +2,21 @@
 
   class KefotoScraper::CLI
 
-attr_accessor :url, :kefoto_scraper
+    attr_accessor :kefoto_scraper
 
       def initialize
-        @kefoto_scraper = Scraper.new
-      end
+      url = "https://www.kefotos.mx/"
+       @kefoto_scraper = Scraper.new(url)
+       @kefoto_scraper = kefoto_scraper
+       kefoto_scraper.create_new_product
 
+      end
 
       def call
         puts "These are the services that Kefoto offers:"
-        @kefoto_scraper.product_price
-        @kefoto_scraper.scrape_products
         list_products
         puts "Enter the number of the product you wish to inspect"
-        answer = gets.chomp
+        @answer = gets.chomp
         select_from_list_cli
         main_menu
       end
@@ -28,10 +29,10 @@ attr_accessor :url, :kefoto_scraper
       end
 
       def select_from_list_cli
-          if answer.to_i.between?(1,6) == false
+          if @answer.to_i.between?(1,6) == false
             puts "ERROR! You did not select a valid number from the list. Please try again."
           else
-        selected_product = Products.all[answer.to_i-1]
+        selected_product = Products.all[@answer.to_i-1]
         puts "Selecting #{selected_product.name}"
         puts "These is the price range for #{selected_product.name}:"
         puts "#{selected_product.price_range}"
