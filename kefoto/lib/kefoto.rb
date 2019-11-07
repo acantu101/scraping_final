@@ -1,8 +1,7 @@
-
-
-require_relative "./kefoto_scraper/CLI.rb"
-require "kefoto_scraper/version"
+require_relative "./kefoto_scraper/version"
 require "nokogiri"
 require "pry"
 require "httparty"
 require_relative "./kefoto_scraper/CLI"
+require_relative "./kefoto_scraper/products"
+require_relative "./kefoto_scraper/scraper"
