@@ -20,13 +20,16 @@ class Scraper
        prices = Nokogiri::HTML(HTTParty.get link).text
        price_a = prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
         prices_a.each do |price|
-            price_range << price_a[0]
-          end
+          price_range << price[0]
+
          @product = Products.new(name, link, price_range)
 
          @product = product
+       end
       end
     end
+
+
 
 
 
