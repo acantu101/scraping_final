@@ -5,14 +5,12 @@
     attr_accessor :kefoto_scraper
 
       def initialize
-      url = "https://www.kefotos.mx/"
-       @kefoto_scraper = Scraper.new(url)
-       @kefoto_scraper = kefoto_scraper
-       kefoto_scraper.create_new_product
-
+      site = "https://www.kefotos.mx"
+      kefoto_scraper = Scraper.new(site)
       end
 
       def call
+          binding.pry
         puts "These are the services that Kefoto offers:"
         list_products
         puts "Enter the number of the product you wish to inspect"

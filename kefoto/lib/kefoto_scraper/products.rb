@@ -1,10 +1,10 @@
 class Products
 
-  attr_accessor :name, :link, :price_range
+  attr_accessor :name, :price_range
 
   @@all = []
 
-  def initialize(name)
+  def initialize(name, price_range)
     @name = name
     @price_range = []
     save
@@ -18,7 +18,6 @@ class Products
   def save
     @@all << self
   end
-
 
 
 end
