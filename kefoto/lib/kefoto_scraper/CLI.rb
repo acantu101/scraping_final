@@ -5,13 +5,12 @@
     attr_accessor :kefoto_scraper
 
       def initialize
-      site = "https://www.kefotos.mx"
-      kefoto_scraper = Scraper.new
-      kefoto_scraper.scrape_page(site)
-      kefoto_scraper.name
-      kefoto_scraper.link
+      site = "https://www.kefotos.mx/"
+      kefoto_scraper = Scraper.new(site)
+      kefoto_scraper.get_name
+      kefoto_scraper.get_link
       kefoto_scraper.create_new_product
-      
+
       end
 
       def call

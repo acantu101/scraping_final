@@ -1,56 +1,54 @@
 
 require 'httparty'
 require 'open-uri'
+require 'net/http'
 
 class Scraper
 
-  attr_accessor :doc, :product_names, :site, :name, :link
+  attr_accessor :site, :content, :price_range
 
 
-  def initialize
-    @price_range = [].uniq
+  def initialize(site)
+      @site = site
+      doc = Nokogiri::HTML(Net::HTTP.get(URI(site)))
+      @content = doc.css(".nav-item li")
+      @price_range = [].uniq
   end
 
 
-  def scrape_page(site)
-    @site = site
-    doc = Nokogiri::HTML(open (site))
-    content = doc.css(".nav-item li")
-    content
-  end
-
-  def name
-   scrape_page(site).each do |product|
-      @name = product.css("span").text
-      @name
+  def get_name
+   @content.each do |product|
+    @name = product.css("span").text
      end
    end
 
-   def link
-    scrape_page(site).each do |product|
-      plink = product.css("a").attr("href").text
-      @link = site.concat(plink)
-      @link 
+   def get_link
+    @content.each do |product|
+      @plink = product.css("a").attr("href").text
+      @link = site.concat(@plink)
     end
   end
 
-  def price_range
-    prices = Nokogiri::HTML(open (link))
+  def get_price_range
+    @link = link
+
+    prices = Nokogiri::HTML(Net::HTTP.get(URI(link)))
     pr = prices.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/)
     prices = pr.text
-      prices.each do |price|
+    prices.each do |price|
          if @price_range.include?(price[0]) == false
           @price_range << price[0]
          end
-         @price_range = price_range
-         price_range
       end
     end
 
 
     def create_new_product
-    new_product = Products.new(name, price_range)
-    puts new_product
+      get_name
+      get_link
+      get_price_range
+      new_product = Products.new(@name, @price_range)
+      puts new_product
     end
 
   end
