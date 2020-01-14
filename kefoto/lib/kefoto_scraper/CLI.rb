@@ -1,3 +1,4 @@
+
   require 'pry'
 
   class KefotoScraper::CLI
@@ -5,11 +6,10 @@
     attr_accessor :kefoto_scraper
 
       def initialize
-      site = "https://www.kefotos.mx/aficionado"
+      site = "https://www.kefotos.mx/aficionado/"
       kefoto_scraper = Scraper.new(site)
-      kefoto_scraper.get_name
-      kefoto_scraper.get_link
-      kefoto_scraper.create_new_product
+
+      kefoto_scraper.get_products
 
       end
 
