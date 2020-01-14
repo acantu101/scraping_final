@@ -5,7 +5,7 @@
     attr_accessor :kefoto_scraper
 
       def initialize
-      site = "https://www.kefotos.mx/"
+      site = "https://www.kefotos.mx/aficionado"
       kefoto_scraper = Scraper.new(site)
       kefoto_scraper.get_name
       kefoto_scraper.get_link
