@@ -16,7 +16,7 @@
         puts "These are the services that Kefoto offers:"
         list_products
         puts "Enter the number of the product you wish to inspect"
-        @answer = gets.chomp
+        @index = gets.chomp
         select_from_list_cli
         call
       end
@@ -30,7 +30,7 @@
       end
 
       def select_from_list_cli
-          if @answer.to_i.between?(1,6) == false
+          if @index.to_i.between?(1,6) == false
             puts "ERROR! You did not select a valid number from the list. Please try again."
           else
         selected_product = Products.all[@answer.to_i-1]
@@ -42,8 +42,8 @@
 
       def return_to_main_menu
         puts "Would you like to inspect another product? for yes type 'y' for no type 'exit!"
-          @yn = gets.chomp
-            if @yn ==  "y"
+          @answer= gets.chomp
+            if @answer ==  "y"
               KefotoScraper::CLI.new.call
             else
               puts "ERROR!: Please enter 'y' for 'yes' or 'exit!' for 'no'."
