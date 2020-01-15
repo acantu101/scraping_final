@@ -39,9 +39,9 @@
       end
 
       def return_to_main_menu
-      puts "Would you like to inspect another product? for yes type 'y' for no type 'exit!"
+      puts "Would you like to inspect another product? for yes type 'yes' for 'no' type 'exit!"
       @answer = gets.chomp
-          if @answer ==  "y"
+          if @answer == "yes"
             KefotoScraper::CLI.new.call
           else
             puts ">>ERROR<<! Please enter 'y' for 'yes' or 'exit!' for 'no'."
