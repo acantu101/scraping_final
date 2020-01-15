@@ -40,7 +40,7 @@
 
       def return_to_main_menu
       puts "Would you like to inspect another product? for yes type 'y' for no type 'exit!"
-      @answer= gets.chomp
+      @answer = gets.chomp
           if @answer ==  "y"
             KefotoScraper::CLI.new.call
           else
