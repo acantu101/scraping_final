@@ -23,8 +23,7 @@
 
       def list_products
         Products.all.each_with_index do |product, i|
-
-        puts "#{i+1} #{product.name}"
+          puts "#{i+1} #{product.name}"
         end
       end
 
@@ -32,21 +31,21 @@
           if @index.to_i.between?(1,6) == false
             puts "ERROR! You did not select a valid number from the list. Please try again."
           else
-        selected_product = Products.all[@answer.to_i-1]
-        puts "These are the prices for #{selected_product.name}:"
-        puts "#{selected_product.price_range}"
-        return_to_main_menu
-        end
+            selected_product = Products.all[@answer.to_i-1]
+            puts "These are the prices for #{selected_product.name}:"
+            puts "#{selected_product.price_range}"
+            return_to_main_menu
+          end
       end
 
       def return_to_main_menu
-        puts "Would you like to inspect another product? for yes type 'y' for no type 'exit!"
-          @answer= gets.chomp
-            if @answer ==  "y"
-              KefotoScraper::CLI.new.call
-            else
-              puts ">>ERROR<<! Please enter 'y' for 'yes' or 'exit!' for 'no'."
-            end
+      puts "Would you like to inspect another product? for yes type 'y' for no type 'exit!"
+      @answer= gets.chomp
+          if @answer ==  "y"
+            KefotoScraper::CLI.new.call
+          else
+            puts ">>ERROR<<! Please enter 'y' for 'yes' or 'exit!' for 'no'."
+        end
       end
 
 
