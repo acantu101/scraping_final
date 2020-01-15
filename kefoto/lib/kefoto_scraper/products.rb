@@ -6,7 +6,7 @@ class Products
 
   def initialize(name, price_range)
     @name = name
-    @price_range = []
+    @price_range = price_range
     save
   end
 
@@ -16,7 +16,9 @@ class Products
   end
 
   def save
+    if @@all.include?(self) == false
     @@all << self
+    end
   end
 
 

@@ -8,7 +8,6 @@
       def initialize
       site = "https://www.kefotos.mx/aficionado/"
       kefoto_scraper = Scraper.new(site)
-
       kefoto_scraper.get_products
 
       end
@@ -19,12 +18,13 @@
         puts "Enter the number of the product you wish to inspect"
         @answer = gets.chomp
         select_from_list_cli
-        main_menu
+        call
       end
 
 
       def list_products
         Products.all.each_with_index do |product, i|
+
         puts "#{i+1} #{product.name}"
         end
       end
@@ -34,19 +34,19 @@
             puts "ERROR! You did not select a valid number from the list. Please try again."
           else
         selected_product = Products.all[@answer.to_i-1]
-        puts "Selecting #{selected_product.name}"
-        puts "These is the price range for #{selected_product.name}:"
+        puts "These are the prices for #{selected_product.name}:"
         puts "#{selected_product.price_range}"
+        return_to_main_menu
         end
       end
 
-      def main_menu
-        puts "To return to main menu enter 'y'"
+      def return_to_main_menu
+        puts "Would you like to inspect another product? for yes type 'y' for no type 'exit!"
           @yn = gets.chomp
             if @yn ==  "y"
               KefotoScraper::CLI.new.call
             else
-              puts "ERROR!: Please enter 'y' to return to main menu."
+              puts "ERROR!: Please enter 'y' for 'yes' or 'exit!' for 'no'."
             end
       end
 
