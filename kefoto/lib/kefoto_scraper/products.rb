@@ -16,7 +16,7 @@ class Products
 
   def save
     if @@all.include?(self) == false
-    @@all << self
+      @@all << self
     end
   end
 
