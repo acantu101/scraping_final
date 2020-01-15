@@ -21,7 +21,6 @@
         call
       end
 
-
       def list_products
         Products.all.each_with_index do |product, i|
 
