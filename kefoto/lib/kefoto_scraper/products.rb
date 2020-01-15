@@ -1,15 +1,14 @@
 class Products
 
-  attr_accessor :name, :price_range
-
   @@all = []
+
+  attr_accessor :name, :price_range
 
   def initialize(name, price_range)
     @name = name
     @price_range = price_range
     save
   end
-
 
   def self.all
     @@all
@@ -20,6 +19,5 @@ class Products
     @@all << self
     end
   end
-
 
 end
