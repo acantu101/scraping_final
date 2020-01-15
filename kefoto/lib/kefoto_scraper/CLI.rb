@@ -46,7 +46,7 @@
             if @answer ==  "y"
               KefotoScraper::CLI.new.call
             else
-              puts "ERROR!: Please enter 'y' for 'yes' or 'exit!' for 'no'."
+              puts ">>ERROR<<! Please enter 'y' for 'yes' or 'exit!' for 'no'."
             end
       end
 
