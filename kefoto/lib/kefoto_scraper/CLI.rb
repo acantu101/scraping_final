@@ -39,7 +39,7 @@ class KefotoScraper::CLI
           puts "Goodbye!"
           exit
         elsif answer != "yes" && answer != "exit"
-          puts "You did not enter a valid entry"
+          puts "You did not enter a valid entry. Please try again."
           answer = gets.chomp
           elsif answer == "yes"
           main_menu
