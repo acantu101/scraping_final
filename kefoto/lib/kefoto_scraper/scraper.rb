@@ -16,13 +16,14 @@ class Scraper
   end
 
   def get_products
-    @content = @parse_page.css(".nav-item")
-    @content.each do |product|
+    content = @parse_page.css(".nav-item")
+    content.each do |product|
       @name = product.css("a").attr("href").text
       @link = @site + @name
       get_price
       Products.new(@name, @price_range)
     end
+    content
   end
 
   def get_price
