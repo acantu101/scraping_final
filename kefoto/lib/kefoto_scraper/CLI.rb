@@ -1,17 +1,14 @@
+require 'pry'
 
-  require 'pry'
-
-  class KefotoScraper::CLI
+class KefotoScraper::CLI
 
     attr_accessor :kefoto_scraper
 
       def initialize
-      site = "https://www.kefotos.mx/aficionado/"
-      kefoto_scraper = Scraper.new(site)
-      kefoto_scraper.get_products
+        site = "https://www.kefotos.mx/aficionado/"
+        kefoto_scraper = Scraper.new(site)
+        kefoto_scraper.get_products
       end
-#index and answer should be the same thing
-#while loop in program
 
       def call
         puts "welcome to the Kefoto Scrapper CLI. To exit the program type 'exit' when prompt to answer a question. Enjoy!"
@@ -24,16 +21,16 @@
         list_products
         puts "Enter the index of the product to see it's prices."
         answer = gets.chomp
-        if answer == "exit"
-          puts "Goodbye!"
-          exit
-        elsif answer.to_i.between?(1,6) == false
-          puts "You entered an invalid number. Please enter a valid number to continue."
-        else
-        select_from_list_cli(answer)
-        end_flow
-      end
-    end
+            if answer == "exit"
+                puts "Goodbye!"
+                exit
+            elsif answer.to_i.between?(1,6) == false
+                puts "You entered an invalid number. Please enter a valid number to continue."
+            else
+                select_from_list_cli(answer)
+                end_flow
+            end
+        end
 
       def end_flow
         puts "to return to the list of products type 'yes' or 'exit' to finish"
@@ -46,9 +43,8 @@
           answer = gets.chomp
           elsif answer == "yes"
           main_menu
-
+        end
     end
-  end
 
       def list_products
         Products.all.each_with_index do |product, i|
