@@ -32,7 +32,7 @@ class KefotoScraper::CLI
                 select_from_list_cli(answer)
                 end_flow
             end
-          end
+        end
       end
 
       def end_flow
