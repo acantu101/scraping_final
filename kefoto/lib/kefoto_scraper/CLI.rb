@@ -20,7 +20,7 @@ class KefotoScraper::CLI
         puts "These are the services that Kefoto offers:"
         list_products
         answer = ""
-        until answer.to_i.between?(1,6) == true
+          until answer.to_i.between?(1,6) == true
         puts "Enter the index of the product to see it's prices."
         answer = gets.chomp
             if answer == "exit"
@@ -32,7 +32,7 @@ class KefotoScraper::CLI
                 select_from_list_cli(answer)
                 end_flow
             end
-        end
+          end
       end
 
       def end_flow
@@ -40,14 +40,14 @@ class KefotoScraper::CLI
         until answer == "yes" || answer == "exit" do
           puts "to return to the list of products type 'yes' or 'exit' to finish"
           answer = gets.chomp
-        if answer == "exit"
+            if answer == "exit"
           puts "Goodbye!"
           exit
-        elsif answer != "yes" && answer != "exit"
+            elsif answer != "yes" && answer != "exit"
           puts "You did not enter a valid entry. Please try again."
-          elsif answer == "yes"
+            elsif answer == "yes"
           main_menu
-        end
+            end
         end
      end
 
