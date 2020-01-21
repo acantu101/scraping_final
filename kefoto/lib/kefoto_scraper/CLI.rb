@@ -21,7 +21,7 @@ class KefotoScraper::CLI
         list_products
         answer = ""
           until answer.to_i.between?(1,6) == true
-        puts "Enter the index of the product to see it's prices."
+        puts "Enter the index of the product to see it's prices or type 'exit' to finish."
         answer = gets.chomp
             if answer == "exit"
                 puts "Goodbye!"
