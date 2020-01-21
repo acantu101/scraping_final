@@ -40,7 +40,6 @@ class KefotoScraper::CLI
           exit
         elsif answer != "yes" && answer != "exit"
           puts "You did not enter a valid entry. Please try again."
-          answer = gets.chomp
           elsif answer == "yes"
           main_menu
         end
@@ -56,7 +55,10 @@ class KefotoScraper::CLI
         selected_product = Products.all[answer.to_i-1]
         puts "These are the prices for #{selected_product.name}:"
         puts "#{selected_product.price_range}"
-        puts "The average price for #{selected_product.name} is #{selected_product.price_range.reduce(:+).to_f / selected_product.price_range.size}"
+        average_price = selected_product.price_range.reduce(:+).to_f / selected_product.price_range.size
+        puts "The average price for #{selected_product.name} is #{average_price}"
+        puts "The max price is $#{selected_product.price_range.max}"
+        puts "The min price is $#{selected_product.price_range.min}"
       end
 
     end
