@@ -30,7 +30,7 @@ class KefotoScraper::CLI
                 select_from_list_cli(answer)
                 end_flow
             end
-        end
+      end
 
       def end_flow
         puts "to return to the list of products type 'yes' or 'exit' to finish"
@@ -44,7 +44,7 @@ class KefotoScraper::CLI
           elsif answer == "yes"
           main_menu
         end
-    end
+     end
 
       def list_products
         Products.all.each_with_index do |product, i|
