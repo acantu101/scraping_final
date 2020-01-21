@@ -18,8 +18,9 @@ class Scraper
   def get_products
     content = @parse_page.css(".nav-item")
     content.each do |product|
-      @name = product.css("a").attr("href").text
-      @link = @site + @name
+      @name = product.css("span").text
+      @url = product.css("a").attr("href").text
+      @link = @site + @url
       get_price
       Products.new(@name, @price_range)
     end
