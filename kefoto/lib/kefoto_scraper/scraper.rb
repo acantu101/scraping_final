@@ -1,7 +1,7 @@
 
 require 'httparty'
-require 'net/http'
 require 'open-uri'
+require 'net/http'
 require 'pry'
 
 class Scraper
