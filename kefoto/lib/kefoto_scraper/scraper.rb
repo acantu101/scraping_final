@@ -30,10 +30,10 @@ class Scraper
     @costo = []
     prices = Nokogiri::HTML(open(@link)).content.scan(/[\$£](\d{1,3}(,\d{3})*(\.\d*)?)/).each do |price|
       @costo << price[0].to_i
-      binding.pry
       end
     @price_range = @costo.uniq.sort!
     @price_range
+    binding.pry
     end
 
   end
