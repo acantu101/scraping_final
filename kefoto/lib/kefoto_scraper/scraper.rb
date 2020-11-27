@@ -27,7 +27,7 @@ class Scraper
       Products.new(@name, @price_range)
       
     end
-    new_product
+
   end
 
   def get_price
