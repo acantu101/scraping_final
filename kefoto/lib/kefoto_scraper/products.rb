@@ -7,6 +7,7 @@ class Products
   def initialize(name, price_range)
     @name = name
     @price_range = price_range
+      binding.pry
     save
   end
 
@@ -19,5 +20,5 @@ class Products
       @@all << self
     end
   end
-  binding.pry
+
 end
