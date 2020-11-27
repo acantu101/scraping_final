@@ -21,7 +21,8 @@ class Scraper
       @url = product.css("a").attr("href").text
       @link = @site + @url
       get_price
-      Products.new(@name, @price_range)
+      new_product = Products.new(@name, @price_range)
+      new_product
     end
     content
   end
