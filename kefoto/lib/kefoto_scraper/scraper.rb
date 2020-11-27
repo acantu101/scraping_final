@@ -23,7 +23,8 @@ class Scraper
       @url = product.css("a").attr("href").text
       @link = @site + @url
       get_price
-      new_product = Products.new(@name, @price_range)
+	    @price_range = @costo.uniq.sort!
+      Products.new(@name, @price_range)
       
     end
     new_product
