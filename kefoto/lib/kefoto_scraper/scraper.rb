@@ -24,7 +24,6 @@ class Scraper
       Products.new(@name, @price_range)
     end
     content
-    binding.pry
   end
 
   def get_price
