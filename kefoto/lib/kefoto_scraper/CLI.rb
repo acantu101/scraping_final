@@ -5,7 +5,7 @@ class KefotoScraper::CLI
     attr_accessor :kefoto_scraper
 
       def initialize
-        site = "https://www.kefotos.mx/aficionado/"
+        site = "www.kefotos.mx/aficionado/"
         kefoto_scraper = Scraper.new(site)
         kefoto_scraper.get_products
       end
