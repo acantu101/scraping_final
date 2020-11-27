@@ -6,6 +6,8 @@ class KefotoScraper::CLI
 
       def initialize
         site = "www.kefotos.mx/aficionado/"
+                    binding.pry
+
         kefoto_scraper = Scraper.new(site)
         kefoto_scraper.get_products
       end
