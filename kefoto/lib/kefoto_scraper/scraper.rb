@@ -13,11 +13,6 @@ class Scraper
       @site = site
       doc = HTTParty.get(site)
       @parse_page ||= Nokogiri::HTML(doc)
-	  get_price
-	  @price_range = @costo.uniq.sort!
-	  get_products 
-	  @name = new_product.name
-	  @price_range = new_product_price_range
 
   end
 
