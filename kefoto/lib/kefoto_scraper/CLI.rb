@@ -53,7 +53,7 @@ class KefotoScraper::CLI
      end
 
       def list_products
-        Products.all.sort_by {|product| product.name}.each.with_index(1) do |name, i|
+        Products.all.sort_by {|product| product.name}.each.with_index(1) do |product.name, i|
           puts "#{i}. #{product.name}."
         end
       end
