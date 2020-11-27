@@ -53,7 +53,6 @@ class KefotoScraper::CLI
      end
 
       def list_products
-          binding.pry
         Products.all.sort_by {|product| product.name}.each.with_index(1) do |name, i|
           puts "#{i}. #{product.name}."
         end
