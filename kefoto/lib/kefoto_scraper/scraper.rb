@@ -34,7 +34,8 @@ class Scraper
       end
     @price_range = @costo.uniq.sort!
     @price_range
-    binding.pry
+
     end
+    binding.pry
 
   end
