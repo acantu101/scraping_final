@@ -8,11 +8,15 @@ class Scraper
   attr_accessor :site, :content, :name, :price_range
 
   def initialize(site)
-    get_price
-    @price_range = @costo.uniq.sort!
+    
       @site = site
       doc = HTTParty.get(site)
       @parse_page ||= Nokogiri::HTML(doc)
+	  get_price
+	  @price_range = @costo.uniq.sort!
+	  get_products 
+	  @name = new_product.name
+	  @price_range = new_product_price_range
 
   end
 
@@ -24,9 +28,9 @@ class Scraper
       @link = @site + @url
       get_price
       new_product = Products.new(@name, @price_range)
-      new_product
+      
     end
-    content
+    new_product
   end
 
   def get_price
