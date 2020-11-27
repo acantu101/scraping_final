@@ -19,6 +19,5 @@ class Products
       @@all << self
     end
   end
-  binding.pry
 
 end
