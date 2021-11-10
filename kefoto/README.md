@@ -1,8 +1,6 @@
 # Kefoto
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/kefoto`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Final Project for my Ruby class with Flat Iron. I built a gem called kefoto that has a Command line interface that scrapes a photography website for it's products and prices.
 
 ## Installation
 
@@ -21,7 +19,7 @@ Or install it yourself as:
     $ gem install kefoto
 
 ## Usage
-Final Project for my Ruby class with Flat Iron. I built a gem called kefoto that has a Command line interface that scrapes a photography website for it's products and prices. This project is meant to show case my object oriented programming skills so I built three classes that interact with each other. The CLI, Products, and Scraper class. 
+ This project is meant to show case my object oriented programming skills so I built three classes that interact with each other. The CLI, Products, and Scraper class. 
 
 ## Development
 
