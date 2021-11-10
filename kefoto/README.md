@@ -21,8 +21,7 @@ Or install it yourself as:
     $ gem install kefoto
 
 ## Usage
-
-TODO: Write usage instructions here
+Final Project for my Ruby class with Flat Iron. I built a gem called kefoto that has a Command line interface that scrapes a photography website for it's products and prices. This project is meant to show case my object oriented programming skills so I built three classes that interact with each other. The CLI, Products, and Scraper class. 
 
 ## Development
 
